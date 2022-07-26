@@ -17,5 +17,6 @@
   "packageManager": "yarn@3.2.2",
   "dependencies": {
     "standard-version": "^9.5.0"
-  }
+  },
+  "version": "0.0.1"
 }

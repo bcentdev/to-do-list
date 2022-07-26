@@ -1,0 +1,21 @@
+{
+  "name": "to-do-list",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcentdev/to-do-list.git"
+  },
+  "author": "Vicente Torres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bcentdev/to-do-list/issues"
+  },
+  "homepage": "https://github.com/bcentdev/to-do-list#readme",
+  "scripts": {
+    "release": "standard-version --release-as",
+    "push": "git push --follow-tags origin main"
+  },
+  "packageManager": "yarn@3.2.2",
+  "dependencies": {
+    "standard-version": "^9.5.0"
+  }
+}

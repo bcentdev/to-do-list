@@ -190,6 +190,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mongoose@npm:^5.11.97":
+  version: 5.11.97
+  resolution: "@types/mongoose@npm:5.11.97"
+  dependencies:
+    mongoose: "*"
+  checksum: 54c896814a92898535eb8965f90308f2661b75f4a53e28405802fbe9f90ba7d37140f151b1e291e08555a1700d3486911104c108ed02a94c6feddeab6bd3bfea
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^18.6.1":
   version: 18.6.1
   resolution: "@types/node@npm:18.6.1"
@@ -490,7 +499,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bson@npm:^4.6.2, bson@npm:^4.6.3":
+"bson@npm:^4.6.2, bson@npm:^4.6.3, bson@npm:^4.6.5":
   version: 4.6.5
   resolution: "bson@npm:4.6.5"
   dependencies:
@@ -2238,6 +2247,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mongodb@npm:4.8.1":
+  version: 4.8.1
+  resolution: "mongodb@npm:4.8.1"
+  dependencies:
+    bson: ^4.6.5
+    denque: ^2.0.1
+    mongodb-connection-string-url: ^2.5.2
+    saslprep: ^1.0.3
+    socks: ^2.6.2
+  dependenciesMeta:
+    saslprep:
+      optional: true
+  checksum: 97ff4ebe3fde7b3b5b133d8f7a2e4d6e372c44f8223a6d40b13bb3a705bbbb48ed50958a0fc6b3a33161605723479fced8e0eb83cf7fd5271f7530e6e2d67a2d
+  languageName: node
+  linkType: hard
+
+"mongoose@npm:*":
+  version: 6.5.0
+  resolution: "mongoose@npm:6.5.0"
+  dependencies:
+    bson: ^4.6.5
+    kareem: 2.4.1
+    mongodb: 4.8.1
+    mpath: 0.9.0
+    mquery: 4.0.3
+    ms: 2.1.3
+    sift: 16.0.0
+  checksum: af2ce7e93f363eb65f281f7fb1e77362a6de9dd8a8f51825af3d263bd64eb556337cdcf249e112ca21c99848e7adde7af3b8d48831d01bd8dcc7c7a8495ef7ac
+  languageName: node
+  linkType: hard
+
 "mongoose@npm:^6.4.7":
   version: 6.4.7
   resolution: "mongoose@npm:6.4.7"
@@ -3271,6 +3311,7 @@ __metadata:
   resolution: "to-do-list-api@workspace:packages/api"
   dependencies:
     "@types/express": ^4.17.13
+    "@types/mongoose": ^5.11.97
     "@types/node": ^18.6.1
     concurrently: ^7.3.0
     dotenv: ^16.0.1

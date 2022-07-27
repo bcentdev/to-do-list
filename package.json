@@ -14,9 +14,12 @@
     "release": "standard-version --release-as",
     "push": "git push --follow-tags origin main"
   },
-  "packageManager": "yarn@3.2.2",
   "dependencies": {
     "standard-version": "^9.5.0"
   },
-  "version": "0.0.1"
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "0.0.1",
+  "packageManager": "yarn@3.2.2"
 }

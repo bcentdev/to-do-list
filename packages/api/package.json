@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint 'src/**/*.ts'",
     "start": "ts-node src/index.ts",
     "dev": "concurrently \"yarn tsc --watch\" \"ts-node-dev --respawn src/index.ts\""
   },

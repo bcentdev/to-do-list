@@ -44,8 +44,8 @@ module.exports = {
     '@typescript-eslint/no-object-literal-type-assertion': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
-    '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    '@typescript-eslint/no-use-before-define': ['error', {functions: false}],
+    '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
 
     // Prettier
     'prettier/prettier': [
@@ -74,17 +74,12 @@ module.exports = {
 
     'padding-line-between-statements': [
       'error',
-      { 'blankLine': 'always', 'prev': ['const'], 'next': '*'},
-      { 'blankLine': 'any', 'prev': ['const'], 'next': ['const', 'if']}
+      {blankLine: 'always', prev: ['const'], next: '*'},
+      {blankLine: 'any', prev: ['const'], next: ['const', 'if']}
     ],
 
     // Immutable
     'immutable/no-let': 'error',
     'immutable/no-this': 'error'
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 };

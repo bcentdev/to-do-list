@@ -1,0 +1,3 @@
+{
+  "extends": ["@to-do-list/eslint-config"]
+}

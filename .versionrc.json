@@ -7,6 +7,8 @@
     {"type": "style", "section": "Styles changes"},
     {"type": "refactor", "section": "Refactoring"},
     {"type": "perf", "section": "Performance improvements"},
-    {"type": "test", "section": "Testing"}
+    {"type": "test", "section": "Testing"},
+    {"type": "ci", "section": "Continuous Integration"},
+    {"type": "revert", "section": "Reverts"}
   ]
 }

@@ -14,7 +14,7 @@
     "typecheck": "yarn workspaces foreach -tvp run typecheck",
     "lint": "yarn workspaces foreach -tvp run lint",
     "release": "standard-version --release-as",
-    "push": "git push --follow-tags origin main",
+    "push": "git push --follow-tags origin master",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
@@ -37,6 +37,17 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "never",
+        [
+          "lower-case",
+          "pascal-case",
+          "camel-case"
+        ]
+      ]
+    }
   }
 }

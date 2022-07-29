@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/bcentdev/to-do-list/compare/v0.0.2...v0.0.3) (2022-07-29)
+
+
+### Core changes
+
+* Add eslint configuration ([7ddb9dc](https://github.com/bcentdev/to-do-list/commit/7ddb9dc3e9495af187f9f65bfb58afaddc419d2c))
+* add husky and commitlint ([d818eb9](https://github.com/bcentdev/to-do-list/commit/d818eb972ce07fb02e12d0862d61eb048c423c0a))
+* Add mongoDB configuration ([4c550d8](https://github.com/bcentdev/to-do-list/commit/4c550d83c213577eb79078c2b8ef2f0a1357785a))
+* Creating api package ([30ed2f9](https://github.com/bcentdev/to-do-list/commit/30ed2f935c8eb999589ca1e43044ca849e2a7f0d))
+
 ### [0.0.2](https://github.com/bcentdev/to-do-list/compare/v0.0.1...v0.0.2) (2022-07-27)
 
 

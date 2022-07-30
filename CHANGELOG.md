@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/bcentdev/to-do-list/compare/v0.0.3...v0.1.0) (2022-07-30)
+
+
+### Features
+
+* First api endpoint created ([aed4498](https://github.com/bcentdev/to-do-list/commit/aed44985aeba6434b8ff33e05718deb44ab0e707))
+
+
+### Core changes
+
+* Changes in commitlint ([5f9560e](https://github.com/bcentdev/to-do-list/commit/5f9560e1f015549bf54191e9fc37bc7e6084cbb0))
+
 ### [0.0.3](https://github.com/bcentdev/to-do-list/compare/v0.0.2...v0.0.3) (2022-07-29)
 
 

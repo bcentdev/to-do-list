@@ -1,5 +1,6 @@
 {
   "name": "to-do-list",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bcentdev/to-do-list.git"
@@ -26,7 +27,6 @@
     "packages/*",
     "eslint-config"
   ],
-  "version": "0.0.3",
   "packageManager": "yarn@3.2.2",
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",

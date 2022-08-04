@@ -355,15 +355,18 @@ __metadata:
   resolution: "@to-do-list/api@workspace:packages/api"
   dependencies:
     "@to-do-list/eslint-config": "workspace:*"
+    "@types/body-parser": ^1
     "@types/eslint": ^8.4.5
     "@types/express": ^4.17.13
     "@types/mongoose": ^5.11.97
     "@types/node": ^18.6.1
     "@types/uuid": ^8.3.4
+    body-parser: ^1.20.0
     concurrently: ^7.3.0
     dotenv: ^16.0.1
     eslint: ^8.20.0
     express: ^4.18.1
+    http-status-codes: ^2.2.0
     mongoose: ^6.4.7
     ts-node: ^10.9.1
     ts-node-dev: ^2.0.0
@@ -427,7 +430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-parser@npm:*":
+"@types/body-parser@npm:*, @types/body-parser@npm:^1":
   version: 1.19.2
   resolution: "@types/body-parser@npm:1.19.2"
   dependencies:
@@ -985,7 +988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:1.20.0":
+"body-parser@npm:1.20.0, body-parser@npm:^1.20.0":
   version: 1.20.0
   resolution: "body-parser@npm:1.20.0"
   dependencies:
@@ -2849,6 +2852,13 @@ __metadata:
     agent-base: 6
     debug: 4
   checksum: e2ee1ff1656a131953839b2a19cd1f3a52d97c25ba87bd2559af6ae87114abf60971e498021f9b73f9fd78aea8876d1fb0d4656aac8a03c6caa9fc175f22b786
+  languageName: node
+  linkType: hard
+
+"http-status-codes@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "http-status-codes@npm:2.2.0"
+  checksum: 31e1d730856210445da0907d9b484629e69e4fe92ac032478a7aa4d89e5b215e2b4e75d7ebce40d0537b6850bd281b2f65c7cc36cc2677e5de056d6cea1045ce
   languageName: node
   linkType: hard
 

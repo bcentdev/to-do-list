@@ -18,19 +18,6 @@ module.exports = {
     'es6': true
   },
   rules: {
-    // Imports order
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index'], 'unknown'],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-      },
-    ],
-
     // Eslint native
     'no-duplicate-imports': 'error',
 
@@ -80,6 +67,13 @@ module.exports = {
 
     // Immutable
     'immutable/no-let': 'error',
-    'immutable/no-this': 'error'
+    'immutable/no-this': 'error',
+
+    // Import rules
+    'import/no-relative-parent-imports': 'error',
+    'import/group-exports': 'error',
+
+    // No eslint disable
+    'no-eslint-disable/no-eslint-disable': 'warn',
   },
 };

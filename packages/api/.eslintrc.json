@@ -1,3 +1,37 @@
 {
-  "extends": ["@to-do-list/eslint-config"]
+  "extends": [
+    "@to-do-list/eslint-config"
+  ],
+  "rules": {
+    // Imports order
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "api/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "unknown"
+        ],
+        "pathGroupsExcludedImportTypes": ["index"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }

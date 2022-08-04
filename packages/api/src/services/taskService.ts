@@ -1,23 +1,48 @@
-import Task from 'api/models/task.model';
+import { isValidObjectId } from 'mongoose';
 
-const getAllTasks = async () => {
+import { Task, TaskId, TaskModel } from 'api/models/task.model';
+
+const getAllTasks = () => {
   try {
-    return await Task.find().orFail(new Error('No tasks found'));
+    return TaskModel.find();
   } catch (error) {
     console.log(`find error => ${error}`);
+    return error as Error;
+  }
+};
+
+const getOneTask = async (id: TaskId) => {
+  if (!isValidObjectId(id)) {
+    return new Error('Unknown Record');
+  }
+
+  try {
+    const task = await TaskModel.findById(id);
+
+    if (!task) {
+      return new Error('Task not found');
+    }
+
+    return task;
+  } catch (error) {
+    console.log(`find one error => ${error}`);
+    return error as Error;
+  }
+};
+
+const createNewTask = (newTask: Task) => {
+  try {
+    return TaskModel.create(newTask).catch((error) => {
+      console.log(`create error => ${error}`);
+      return error;
+    });
+  } catch (error) {
+    console.log(`create error => ${error}`);
     return error;
   }
 };
 
-/*const getOneTask = () => {
-  return;
-};
-
-const createNewTask = (newTask) => {
-  return;
-};
-
-const updateOneTask = () => {
+/*const updateOneTask = () => {
   return;
 };
 
@@ -27,6 +52,8 @@ const deleteOneTask = () => {
 
 const taskService = {
   getAllTasks,
+  getOneTask,
+  createNewTask,
 };
 
 export default taskService;

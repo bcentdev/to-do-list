@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/bcentdev/to-do-list/compare/v0.1.0...v0.1.1) (2022-08-04)
+
+
+### Features
+
+* Add update one and delete one endpoints ([09a71f9](https://github.com/bcentdev/to-do-list/commit/09a71f901045b3e06cfa5177cbf0667e0c7616a5))
+* Create and gets working okey ([02a8af6](https://github.com/bcentdev/to-do-list/commit/02a8af62707283e567b6af8f68f4e68a392515bc))
+
 ## [0.1.0](https://github.com/bcentdev/to-do-list/compare/v0.0.3...v0.1.0) (2022-07-30)
 
 

@@ -20,9 +20,10 @@
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noEmit": true,
-    "types": ["node"],
+    "types": ["node", "jest", "mongoose"],
     "paths": {
       "api/*": ["./src/*"],
+      "config/*": ["./config/*"],
     }
   }
 }

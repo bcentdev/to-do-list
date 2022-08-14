@@ -3,7 +3,7 @@ import express, { Express, Request, Response } from 'express';
 
 import taskRoutes from 'api/v1/routes/taskRoutes';
 
-import '../database';
+import 'config/database.config';
 
 const app: Express = express();
 const PORT = process.env.PORT || 3031;

@@ -1,5 +1,5 @@
-import {ConnectOptions, connect, connection} from 'mongoose';
 import dotenv from 'dotenv';
+import { ConnectOptions, connect, connection } from 'mongoose';
 
 dotenv.config();
 
@@ -7,14 +7,10 @@ const options: ConnectOptions = {
   autoIndex: false,
 };
 
-const {
-  MONGO_HOSTNAME,
-  MONGO_DB,
-  MONGO_PORT
-} = process.env;
+const { MONGO_HOSTNAME, MONGO_DB, MONGO_PORT } = process.env;
 
 const dbConnectionURL = {
-  'LOCALURL': `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`
+  LOCALURL: `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`,
 };
 
 connect(dbConnectionURL.LOCALURL, options);

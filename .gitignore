@@ -4,6 +4,7 @@
 yarn-error.log
 node_modules
 dist
+coverage
 
 # Yarn v3
 .pnp.*

@@ -1,4 +1,4 @@
-import { isValidObjectId } from 'mongoose';
+import { isValidObjectId, Error } from 'mongoose';
 
 import { Task, TaskId, TaskModel } from 'api/models/task.model';
 
@@ -9,27 +9,27 @@ const getAllTasks = () => {
   try {
     return TaskModel.find();
   } catch (error) {
-    console.log(`find error => ${error}`);
-    return error as Error;
+    console.error(`find error => ${error}`);
+    throw error;
   }
 };
 
 const getOneTask = async (id: TaskId) => {
   if (!isValidObjectId(id)) {
-    return new Error(UNKNOWN_RECORD_ERROR);
+    throw new Error(UNKNOWN_RECORD_ERROR);
   }
 
   try {
     const task = await TaskModel.findById(id);
 
     if (!task) {
-      return new Error(TASK_NOT_FOUND_ERROR);
+      throw new Error(TASK_NOT_FOUND_ERROR);
     }
 
     return task;
   } catch (error) {
     console.log(`find one error => ${error}`);
-    return error as Error;
+    throw error;
   }
 };
 
@@ -38,45 +38,45 @@ const createNewTask = (newTask: Task) => {
     return TaskModel.create(newTask);
   } catch (error) {
     console.log(`create error => ${error}`);
-    return error as Error;
+    throw error;
   }
 };
 
 const updateOneTask = async (id: TaskId, taskFields: Task) => {
   if (!isValidObjectId(id)) {
-    return new Error(UNKNOWN_RECORD_ERROR);
+    throw new Error(UNKNOWN_RECORD_ERROR);
   }
 
   try {
     const task = await TaskModel.findByIdAndUpdate(id, taskFields, { new: true });
 
     if (!task) {
-      return new Error(TASK_NOT_FOUND_ERROR);
+      throw new Error(TASK_NOT_FOUND_ERROR);
     }
 
     return task;
   } catch (error) {
     console.log(`find and update error => ${error}`);
-    return error as Error;
+    throw error;
   }
 };
 
 const deleteOneTask = async (id: TaskId) => {
   if (!isValidObjectId(id)) {
-    return new Error(UNKNOWN_RECORD_ERROR);
+    throw new Error(UNKNOWN_RECORD_ERROR);
   }
 
   try {
     const task = await TaskModel.findByIdAndDelete(id);
 
     if (!task) {
-      return new Error(TASK_NOT_FOUND_ERROR);
+      throw new Error(TASK_NOT_FOUND_ERROR);
     }
 
     return task;
   } catch (error) {
     console.log(`find and delete error => ${error}`);
-    return error as Error;
+    throw error;
   }
 };
 
@@ -89,3 +89,5 @@ const taskService = {
 };
 
 export default taskService;
+
+export { UNKNOWN_RECORD_ERROR, TASK_NOT_FOUND_ERROR };

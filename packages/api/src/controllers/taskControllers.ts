@@ -2,48 +2,56 @@ import { Request } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import { Task, TaskId } from 'api/models/task.model';
-import taskService from 'api/services/taskService';
+import taskService, { TASK_NOT_FOUND_ERROR, UNKNOWN_RECORD_ERROR } from 'api/services/taskService';
 import CustomResponse from 'api/utils/CustomResponse';
 
-const checkErrors = (task: Task | Error, res: CustomResponse<Task>) => {
-  if (task instanceof Error) {
-    if (task.message === 'Task not found') {
-      res.status(StatusCodes.NOT_FOUND).send({ success: false, error: task.message });
+const MISSING_TASK_ID_ERROR = 'Missing task id';
+
+const sendError = (error: unknown, res: CustomResponse<Task>) => {
+  if (error instanceof Error) {
+    if (error.message === TASK_NOT_FOUND_ERROR) {
+      res.status(StatusCodes.NOT_FOUND).send({ success: false, error: error.message });
       return;
     }
 
-    if (task.message === 'Unknown Record') {
-      res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: task.message });
+    if (error.message === UNKNOWN_RECORD_ERROR) {
+      res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: error.message });
       return;
     }
 
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ success: false, error: task.message });
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ success: false, error: error.message });
     return;
   }
 
-  return task;
+  return error;
 };
 
 const getAllTasks = async (_req: Request, res: CustomResponse<Task[]>) => {
-  const tasks = await taskService.getAllTasks();
+  try {
+    const tasks = await taskService.getAllTasks();
 
-  if (tasks instanceof Error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ success: false, error: tasks.message });
-    return;
+    res.status(StatusCodes.OK).send({ success: true, data: tasks, message: 'Tasks found' });
+  } catch (error) {
+    error instanceof Error &&
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ success: false, error: error.message });
   }
-
-  res.status(StatusCodes.OK).send({ success: true, data: tasks, message: 'Tasks found' });
 };
 
 const getOneTask = async (req: Request<{ taskId: TaskId }>, res: CustomResponse<Task>) => {
-  const task = await taskService.getOneTask(req.params.taskId);
+  const { taskId } = req.params;
 
-  const checkedTask = checkErrors(task, res);
+  if (!taskId) {
+    res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: MISSING_TASK_ID_ERROR });
+    return;
+  }
 
-  !!checkedTask &&
-    res
-      .status(StatusCodes.OK)
-      .send({ success: true, data: checkedTask, message: `Task ${checkedTask.description} found` });
+  try {
+    const task = await taskService.getOneTask(taskId);
+
+    res.status(StatusCodes.OK).send({ success: true, data: task, message: `Task ${task.description} found` });
+  } catch (error) {
+    sendError(error, res);
+  }
 };
 
 const createNewTask = async (
@@ -61,11 +69,13 @@ const createNewTask = async (
     description: body.description,
   };
 
-  const task = await taskService.createNewTask(newTask);
+  try {
+    const task = await taskService.createNewTask(newTask);
 
-  const checkedTask = checkErrors(task, res);
-
-  !!checkedTask && res.status(StatusCodes.CREATED).send({ success: true, data: checkedTask, message: 'Task created' });
+    res.status(StatusCodes.CREATED).send({ success: true, data: task, message: 'Task created' });
+  } catch (error) {
+    sendError(error, res);
+  }
 };
 
 const updateOneTask = async (req: Request<{ taskId: TaskId }>, res: CustomResponse<Task>) => {
@@ -73,6 +83,11 @@ const updateOneTask = async (req: Request<{ taskId: TaskId }>, res: CustomRespon
     body,
     params: { taskId },
   } = req;
+
+  if (!taskId) {
+    res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: MISSING_TASK_ID_ERROR });
+    return;
+  }
 
   if (!body.description) {
     res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: 'Missing description' });
@@ -83,21 +98,30 @@ const updateOneTask = async (req: Request<{ taskId: TaskId }>, res: CustomRespon
     description: body.description,
   };
 
-  const task = await taskService.updateOneTask(taskId, taskFields);
+  try {
+    const task = await taskService.updateOneTask(taskId, taskFields);
 
-  const checkedTask = checkErrors(task, res);
-
-  !!checkedTask && res.status(StatusCodes.OK).send({ success: true, data: checkedTask, message: 'Task updated' });
+    res.status(StatusCodes.OK).send({ success: true, data: task, message: 'Task updated' });
+  } catch (error) {
+    sendError(error, res);
+  }
 };
 
 const deleteOneTask = async (req: Request<{ taskId: TaskId }>, res: CustomResponse<Task>) => {
   const { taskId } = req.params;
 
-  const task = await taskService.deleteOneTask(taskId);
+  if (!taskId) {
+    res.status(StatusCodes.BAD_REQUEST).send({ success: false, error: MISSING_TASK_ID_ERROR });
+    return;
+  }
 
-  const checkedTask = checkErrors(task, res);
+  try {
+    const task = await taskService.deleteOneTask(taskId);
 
-  !!checkedTask && res.status(StatusCodes.OK).send({ success: true, data: checkedTask, message: 'Task deleted' });
+    res.status(StatusCodes.OK).send({ success: true, data: task, message: 'Task deleted' });
+  } catch (error) {
+    sendError(error, res);
+  }
 };
 
 const taskController = {
